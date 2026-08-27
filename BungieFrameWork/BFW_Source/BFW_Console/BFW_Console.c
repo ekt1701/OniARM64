@@ -303,6 +303,46 @@ static void
 COrCommand_CycleDown(
 	void);
 
+// ----------------------------------------------------------------------
+
+// Add a shift-translation helper to enable SHIFT key in command line
+
+static char
+COiApplyShift(
+	char				c,
+	UUtBool				inShiftDown)
+{
+	if (!inShiftDown) return c;
+
+	if (c >= 'a' && c <= 'z') return (char)(c - 32);
+
+	switch (c)
+	{
+		case '`':	return '~';
+		case '1':	return '!';
+		case '2':	return '@';
+		case '3':	return '#';
+		case '4':	return '$';
+		case '5':	return '%';
+		case '6':	return '^';
+		case '7':	return '&';
+		case '8':	return '*';
+		case '9':	return '(';
+		case '0':	return ')';
+		case '-':	return '_';
+		case '=':	return '+';
+		case '[':	return '{';
+		case ']':	return '}';
+		case '\\':	return '|';
+		case ';':	return ':';
+		case '\'':	return '"';
+		case ',':	return '<';
+		case '.':	return '>';
+		case '/':	return '?';
+		default:	return c;
+	}
+}
+
 // ======================================================================
 // functions
 // ======================================================================
@@ -1789,9 +1829,11 @@ COrProcessKeyDown(
 			break;
 
 		default:
+		    // Enable SHIFT key in the command line
 			COgPerformCompletionOnTab = UUcTrue;
-			if (len < COcCharsPerLine) {
-				commandline[len++] = (input_event->key & 0x00FF);
+			if (key >= 0x20 && key <= 0x7E && len < COcCharsPerLine) {
+				UUtBool shiftDown = (input_event->modifiers & (LIcKeyState_LShiftDown | LIcKeyState_RShiftDown)) != 0;
+				commandline[len++] = COiApplyShift((char)key, shiftDown);
 				commandline[len] = '\0';
 			}
 			break;

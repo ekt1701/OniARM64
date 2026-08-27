@@ -779,21 +779,16 @@ LIrPlatform_Update(
 						(unsigned)event.key.keysym.sym, (int)event.key.keysym.scancode,
 						(int)event.key.repeat, (unsigned)event.key.keysym.mod);
 				}
-
+                // Fix unresponsive command line with SHIFT key
 				eventType = (event.key.state == SDL_PRESSED) ? LIcInputEvent_KeyDown : LIcInputEvent_KeyUp;
 
-				current_modifiers |= sdl_to_kmod(event.key.keysym.sym);
-				if (current_modifiers != event.key.keysym.mod)
-				{
-					UUmAssert(UUcFalse);
-					current_modifiers = event.key.keysym.mod;
-				}
+				current_modifiers = event.key.keysym.mod;
 
 				LIrInputEvent_Add(
-					eventType,
-					NULL,
-					sdl_keysym_to_oni_keycode(&event.key.keysym),
-					sdl_to_oni_key_modifiers(current_modifiers)
+				    eventType,
+				    NULL,
+				    sdl_to_oni_keycode(event.key.keysym.sym),
+				    sdl_to_oni_key_modifiers(current_modifiers)
 				);
 			break;
 			case SDL_MOUSEMOTION:
