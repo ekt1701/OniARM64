@@ -697,7 +697,7 @@ AKrInitialize(
 	UUmError_ReturnOnNull(AKgDebugLeafNodes);
 #endif
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	SLrGlobalVariable_Register_Bool("env_show_stairflagged", "Show specially flagged noncollision quads", &AKgShowStairFlagged);
 	SLrGlobalVariable_Register_Bool("env_show_rays", "Draw the rays", &AKgDebug_ShowRays);
 	SLrGlobalVariable_Register_Bool("env_drawallgqs", "Draw all the GQs", &AKgDebug_DrawAllGunks);

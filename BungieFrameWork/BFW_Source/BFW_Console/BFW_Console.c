@@ -510,7 +510,7 @@ COrInitialize(
 	COgDrawAreaHeight = 0;
 
 	// register the console variables
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error = SLrGlobalVariable_Register_Int32(COcFadeTime_Name, "The fade time of the console", &COgFadeTimeValue);
 	UUmError_ReturnOnErrorMsg(error, "Unable to register console control variable");
 

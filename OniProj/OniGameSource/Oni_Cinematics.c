@@ -733,7 +733,7 @@ OCrInitialize(
 			5);
 	UUmError_ReturnOnNull(ONgCinematics);
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	// register the variables
 	error =
 		SLrGlobalVariable_Register_Float(

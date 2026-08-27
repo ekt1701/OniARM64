@@ -321,7 +321,7 @@ ONrMotoko_Initialize(
 
 	error;
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error = SLrGlobalVariable_Register_Int32("m3_clear_color", "color to clear the back buffer to", &ONgMotoko_ClearColor);
 	error =	SLrGlobalVariable_Register_Bool("m3_shade_vertex", "Enables vertex interpolation for the triangle", &ONgMotoko_ShadeVertex);
 	error =	SLrGlobalVariable_Register_Bool("m3_fill_solid", "Toggles wireframe vs filled triangles", &ONgMotoko_FillSolid);

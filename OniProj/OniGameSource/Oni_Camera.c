@@ -284,7 +284,7 @@ UUtError CArInitialize(void)
 {
 	UUtError error;
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	SLrGlobalVariable_Register_Bool("cm_plane_test", "jello camera plane test", &CAgPlaneTest);
 	SLrGlobalVariable_Register_Float("cm_height", "camera height", &CAgHeight);
 	SLrGlobalVariable_Register_Float("cm_distance", "camera distance", &CAgDistance);

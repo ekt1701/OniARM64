@@ -2326,7 +2326,7 @@ ONrGameState_InstallConsoleVariables(void)
 {
 	SLtRegisterBoolTable bool_table[] =
 	{
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 		{ "spatial_footsteps", "spatial footsteps", &ONgSpatialFootsteps },
 		{ "chr_disable_visactive", "disable visibility activation", &ONgDisableVisActive },
 		{ "chr_all_active", "forces all characters to be active", &ONgCharactersAllActive },
@@ -2376,7 +2376,7 @@ ONrGameState_InstallConsoleVariables(void)
 
 	SLtRegisterInt32Table int32_table[] =
 	{
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 		{ "saved_film_character_offset", "saved_film_character_offset", &saved_film_character_offset },
 		{ "chr_death_fade_start", "the number of game ticks until charaters begin to fade", &ONgDeathFadeStart },
 		{ "chr_death_fade_frames", "the number of game ticks until charaters fade over", &ONgDeathFadeFrames },
@@ -2389,7 +2389,7 @@ ONrGameState_InstallConsoleVariables(void)
 
 	SLtRegisterFloatTable float_table[] =
 	{
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 		{ "cm_lookspring_percent", "at what percent of lookspring fight mode turns off", &ONgLookspringFightModePercent },
 		{ "chr_collision_grow", "sets character bounding box collision grow amount", &ONgCharacterCollision_Grow },
 		{ "chr_block_angle", "controls the angle at which the characters can block", &ONgBlockAngle },
@@ -2406,7 +2406,7 @@ ONrGameState_InstallConsoleVariables(void)
 
 	SLtRegisterVoidFunctionTable scripting_function_table[] =
 	{
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 		{ "chr_focus", "Selects what character to control", "chr_index:int", SetMainCharacter },
 		{ "chr_health", "Sets character's health", "chr_index:int [hit_points:int | ]", iSetAnyCharacterHealth },
 		{ "chr_disarm", "Disarms a character or everyone", "chr_index:int", iSetAnyCharacterWeapon },
@@ -2439,7 +2439,7 @@ ONrGameState_InstallConsoleVariables(void)
 	SLrGlobalVariable_Register_Float_Table(float_table);
 	SLrScript_CommandTable_Register_Void(scripting_function_table);
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	SLrGlobalVariable_Register_Bool("chr_show_bnv", "shows the bnv of the main character", &gShowBNV);
 	SLrGlobalVariable_Register_Bool("chr_show_lod", "shows the current lod of the main character", &gShowLOD);
 #endif

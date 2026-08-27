@@ -2121,7 +2121,7 @@ UUtError OBJrTurret_Initialize(void)
 	error = ONrMechanics_Register( OBJcType_Turret, OBJcTypeIndex_Turret, "Turret", sizeof(OBJtOSD_Turret), &methods, 0, &mechanics_methods );
 	UUmError_ReturnOnError(error);
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	// register the id set function
 	error = SLrGlobalVariable_Register_Bool( "turret_show_debug", "Enables the display of turret debug lines",  &OBJgTurret_DrawTurretDebugInfo);
 	UUmError_ReturnOnError(error);

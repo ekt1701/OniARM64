@@ -2180,7 +2180,7 @@ OWrInitialize(
 	// ------------------------------
 	OBJgShowStatus = UUcTrue;
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error =
 		SLrGlobalVariable_Register_Bool(
 			"obj_tool_show_status",

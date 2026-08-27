@@ -4025,7 +4025,7 @@ ONrInGameUI_Initialize(
 	gFullTextureUVsInvert[3].v = 0.0f;
 
 	// create the script command
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error =
 		SLrScript_Command_Register_Void(
 			"diary_page_unlock",

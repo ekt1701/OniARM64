@@ -911,7 +911,7 @@ OBJrCharacter_Initialize(
 			OBJcObjectGroupFlag_CanSetName);
 	UUmError_ReturnOnError(error);
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error =
 		SLrGlobalVariable_Register_Bool(
 			"show_characters",

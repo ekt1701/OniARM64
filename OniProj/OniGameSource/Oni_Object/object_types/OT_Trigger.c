@@ -1454,7 +1454,7 @@ UUtError OBJrTrigger_Initialize(void)
 	error = ONrMechanics_Register( OBJcType_Trigger, OBJcTypeIndex_Trigger, "Trigger", sizeof(OBJtOSD_Trigger), &methods, 0, &mechanics_methods );
 	UUmError_ReturnOnError(error);
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error = SLrGlobalVariable_Register_Bool( "show_triggers", "Enables the display of triggers", &OBJgTrigger_DrawTriggers);
 	UUmError_ReturnOnError(error);
 

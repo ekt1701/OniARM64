@@ -2492,7 +2492,7 @@ UUtError WPrInitialize(
 	UUtUns16 i;
 	WPtWeapon *weapon;
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error = SLrGlobalVariable_Register_Bool("debug_weapons", "prints debugging info about weapon particle events", &WPgDebugShowEvents);
 	error = SLrGlobalVariable_Register_Bool("wp_kickable", "lets the player kick weapons", &WPgPlayerKicksWeapons);
 	error = SLrGlobalVariable_Register_Bool("recoil_edit", "enables editable recoil", &WPgRecoilEdit);
@@ -2523,7 +2523,7 @@ UUtError WPrInitialize(
 		WPiCommand_GivePowerup);
 	UUmError_ReturnOnError(error);
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error =
 		SLrScript_Command_Register_Void(
 			"weapon_reset",

@@ -5554,7 +5554,7 @@ ONrGameState_Initialize(
 	UUtError	error;
 	SLtRegisterBoolTable bool_table[] =
 	{
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 		{ "gs_show_particles", "Turns on the drawing of particles", &ONgParticle_Display },
 		{ "gs_show_sky", "Turns on the sky", &ONgShow_Sky },
 		{ "gs_show_characters", "Turns on the drawing of characters", &ONgShow_Characters },
@@ -5589,7 +5589,7 @@ ONrGameState_Initialize(
 
 	SLtRegisterFloatTable float_table[] =
 	{
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 		{ "gs_input_accel", "Use this to control the input sensitivity", &ONgGameState_InputAccel },
 #endif
 		{ NULL, NULL, NULL }
@@ -5597,7 +5597,7 @@ ONrGameState_Initialize(
 
 	SLtRegisterInt32Table int32_table[] =
 	{
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 		{ "gs_screen_shot_reduce", "2^n amount of reduction", &ONgScreenShotReduceAmount },
 		{ "chr_buffer_size", "0 = normal buffer, otherwise buffer duration", &ONgAnimBuffer },
 		{ "draw_every_frame_multiple", "draw every frame multiple", &ONgDrawEveryFrameMultiple },
@@ -5608,7 +5608,7 @@ ONrGameState_Initialize(
 
 	SLtRegisterVoidFunctionTable scripting_function_table[] =
 	{
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 		{ "perf_prefix", "sets the perf prefix", NULL, ONrTimerPrefix },
 		{ "gs_fov_set", "sets the field of view", "fov_degrees:float", ONrGameState_FieldOfView_Set },
 		{ "debug_env_anim", "draws a line for an environment animation", "name:string", iDebugEnvAnim },

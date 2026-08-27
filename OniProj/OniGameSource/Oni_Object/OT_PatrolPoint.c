@@ -1079,7 +1079,7 @@ OBJrPatrolPath_Initialize(
 			OBJcObjectGroupFlag_CanSetName | OBJcObjectGroupFlag_HasUniqueName);
 	UUmError_ReturnOnError(error);
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error =
 		SLrGlobalVariable_Register_Bool(
 			"show_patrolpaths",

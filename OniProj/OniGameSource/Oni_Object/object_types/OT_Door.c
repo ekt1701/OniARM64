@@ -3170,7 +3170,7 @@ UUtError OBJrDoor_Initialize( )
 	error = ONrMechanics_Register( OBJcType_Door, OBJcTypeIndex_Door, "Door", sizeof(OBJtOSD_Door), &methods, 0, &mechanics_methods );
 	UUmError_ReturnOnError(error);
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error = SLrGlobalVariable_Register_Bool( "door_show_debug", "Shows debug geometry", &OBJgDoor_ShowDebug );
 	UUmError_ReturnOnError(error);
 

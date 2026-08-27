@@ -59,7 +59,7 @@ UUtError ONrSky_Initialize( )
 	ONgSky_SunVisiblityTestCount	= 0;
 	ONgSky_Height					= 0.0f;
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error = SLrGlobalVariable_Register_Bool( "sky_show_sky",			"Toggles display of the sky",				&ONgSky_ShowSky			);
 	UUmError_ReturnOnError(error);
 

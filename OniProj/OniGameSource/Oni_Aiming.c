@@ -46,7 +46,7 @@ void AMrInitialize(void)
 
 	strcpy(ONgAimingLine[0].text, "*** am_show_filenames (4) ***");
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error = SLrGlobalVariable_Register_Bool("am_show_closest", "dumps the closest GQ index to console", &AMgShow_Closest);
 	error = SLrGlobalVariable_Register_Bool("am_show_axes", "shows world axes", &AMgShow_Axes);
 	error = SLrGlobalVariable_Register_Bool("am_show_filenames", "dumps the closest GQ index file/obj name to console", &AMgShow_Filenames);

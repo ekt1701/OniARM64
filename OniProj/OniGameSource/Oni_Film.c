@@ -69,7 +69,7 @@ UUtError ONrFilm_Initialize(
 	strcpy(ONgBoundF2, "");
 	strcpy(ONgBoundF3, "");
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	// Console
 	error =	SLrScript_Command_Register_Void(
 		"sc_focus",

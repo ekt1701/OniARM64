@@ -19,7 +19,7 @@ float			FXgLaser_Width		= 0.2f;
 
 UUtError FXrEffects_Initialize(void)
 {
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	SLrGlobalVariable_Register_Float("fx_laser_width",	"",	&FXgLaser_Width);
 #endif
 

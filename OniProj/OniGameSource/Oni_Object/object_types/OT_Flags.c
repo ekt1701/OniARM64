@@ -768,7 +768,7 @@ OBJrFlag_Initialize(
 			OBJcObjectGroupFlag_None);
 	UUmError_ReturnOnError(error);
 
-#if CONSOLE_DEBUGGING_COMMANDS
+#if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	// register the id set function
 	error =
 		SLrGlobalVariable_Register_Int32(
