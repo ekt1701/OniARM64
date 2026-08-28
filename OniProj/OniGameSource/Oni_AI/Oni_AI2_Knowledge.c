@@ -119,7 +119,7 @@ AI2tDodgeProjectile AI2gKnowledge_DodgeProjectile[AI2cKnowledge_MaxDodgeProjecti
 UUtUns32 AI2gKnowledge_NumDodgeFiringSpreads;
 AI2tDodgeFiringSpread AI2gKnowledge_DodgeFiringSpread[AI2cKnowledge_MaxDodgeFiringSpreads];
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showsounds (Originally: TOOL_VERSION)
 // debugging storage of sounds generated since the last display update
 UUtUns32 AI2gKnowledge_DebugNumSounds;
 AI2tKnowledgeDebugSound AI2gKnowledge_DebugSounds[AI2cKnowledge_DebugMaxNumSounds];
@@ -446,7 +446,7 @@ void AI2rKnowledge_Reset(void)
 	AI2gKnowledge_NumDodgeFiringSpreads = 0;
 	UUrMemory_Clear(AI2gKnowledge_DodgeFiringSpread, sizeof(AI2gKnowledge_DodgeFiringSpread));
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showsounds (Originally: TOOL_VERSION)
 	AI2gKnowledge_DebugNumSounds = 0;
 #endif
 }
@@ -566,7 +566,7 @@ void AI2rKnowledge_Sound(AI2tContactType inImportance, M3tPoint3D *inLocation, f
 	UUtUns32 itr;
 	UUtError error;
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showsounds (Originally: TOOL_VERSION)
 	if (AI2gShowSounds && (AI2gKnowledge_DebugNumSounds < AI2cKnowledge_DebugMaxNumSounds)) {
 		// add this sound to the global sound debugging buffer
 		AI2tKnowledgeDebugSound *sound = &AI2gKnowledge_DebugSounds[AI2gKnowledge_DebugNumSounds++];
@@ -2623,7 +2623,7 @@ void AI2rKnowledge_DisplayFiringSpreads(void)
 // display debugging information about AI sounds
 void AI2rKnowledge_DisplaySounds(void)
 {
-#if TOOL_VERSION
+#if 1 // Enable ai2_showsounds (Originally: TOOL_VERSION)
 	UUtUns32 itr;
 
 	for (itr = 0; itr < AI2gKnowledge_DebugNumSounds; ) {

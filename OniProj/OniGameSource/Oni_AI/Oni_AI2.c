@@ -44,7 +44,7 @@ UUtBool AI2gUltraMode = UUcFalse;
 
 static UUtBool AI2gDebug_BreakOnUpdate = UUcFalse;
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_shownames (Originally: TOOL_VERSION)
 // for debugging name display
 static UUtBool				AI2gDebugName_Initialized;
 static UUtRect				AI2gDebugName_TextureBounds;
@@ -86,7 +86,7 @@ static UUtBool AI2iEnumCallback_SpawnPlayer(OBJtObject *inObject, uintptr_t inUs
 static void AI2rReportState(ONtCharacter *ioCharacter, char *inName, AI2tGoal inGoal, AI2tGoalState *inState,
 							UUtBool inVerbose, AI2tReportFunction inFunction);
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_shownames (Originally: TOOL_VERSION)
 static UUtError AI2rDebugName_Initialize(void);
 static void AI2rDebugName_Terminate(void);
 #endif
@@ -99,7 +99,7 @@ UUtError AI2rInitialize(void)
 {
 	UUtError error;
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_shownames (Originally: TOOL_VERSION)
 	AI2gDebugName_Initialized = UUcFalse;
 #endif
 
@@ -135,7 +135,7 @@ UUtError AI2rInitialize(void)
 // shut down the AI2 system
 void AI2rTerminate(void)
 {
-#if TOOL_VERSION
+#if 1 // Enable ai2_shownames (Originally: TOOL_VERSION)
 	if (AI2gDebugName_Initialized) {
 		AI2rDebugName_Terminate();
 	}
@@ -2219,7 +2219,7 @@ void AI2rDebug_BreakPoint(void)
 // called once every frame by display code
 void AI2rDisplayGlobalDebuggingInfo(void)
 {
-#if TOOL_VERSION
+#if 1 // Enable ai2_showastar (Originally: TOOL_VERSION)
 	if ((AI2gDebug_ShowActivationPaths) || (AI2gDebug_ShowAstarEvaluation)) {
 		ASrDisplayDebuggingInfo();
 	}
@@ -2356,7 +2356,7 @@ void AI2rDisplayDebuggingInfo(ONtCharacter *ioCharacter)
 		M3rGeom_Line_Light(&l0, &l1, IMcShade_White);
 	}
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_shownames (Originally: TOOL_VERSION)
 	// only available in tool because we don't want to allocate
 	// debugging textures in the ship version
 	if (AI2gShowNames || AI2gShowHealth) {
@@ -2526,7 +2526,7 @@ void AI2rDisplayDebuggingInfo(ONtCharacter *ioCharacter)
 		return;
 	}
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showactivationpaths (Originally: TOOL_VERSION)
 	if (AI2gDebug_ShowActivationPaths && (active_character != NULL)) {
 		if (active_character->movement_state.activation_valid) {
 			M3tPoint3D p0, p1;
@@ -2940,7 +2940,7 @@ void AI2rDisplayDebuggingInfo(ONtCharacter *ioCharacter)
 	}
 }
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_shownames (Originally: TOOL_VERSION)
 static UUtError AI2rDebugName_Initialize(void)
 {
 	UUtError error;
@@ -2977,10 +2977,17 @@ static UUtError AI2rDebugName_Initialize(void)
 
 	TSrContext_GetStringRect(AI2gDebugName_TextContext, "maximum_length_of_character_name", &AI2gDebugName_TextureBounds);
 
+    AI2gDebugName_TextureWidth = 100; //Set fixed values for ai2_shownames
+	AI2gDebugName_TextureHeight = 20; //Set fixed values for ai2_shownames
+
+
 	error =
 		M3rTextureMap_New(
-			AI2gDebugName_TextureBounds.right,
-			AI2gDebugName_TextureBounds.bottom,
+			//AI2gDebugName_TextureBounds.right, //These values caused Oni to crash with ai2_shownames
+			//AI2gDebugName_TextureBounds.bottom, //These values caused Oni to crash with ai2_shownames
+			
+			AI2gDebugName_TextureWidth, //Enable ai2_shownames
+			AI2gDebugName_TextureHeight, //Enable ai2_shownames
 			textureFormat,
 			M3cTexture_AllocMemory,
 			M3cTextureFlags_None,

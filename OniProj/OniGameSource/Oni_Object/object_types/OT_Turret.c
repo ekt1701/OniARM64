@@ -276,7 +276,7 @@ static void OBJiTurret_VisibleNodeList_Build(OBJtOSD_Turret *turret_osd)
 
 		AKrEnvironment_NodeList_Get(&bbox, OBJcTurretNodeCount, turret_osd->visible_node_list, 0);
 
-#if TOOL_VERSION
+#if 1 // Enable turret_show_debug (Originally: TOOL_VERSION)
 		if (-1 == turret_osd->visible_node_list[0]) {
 			COrConsole_Printf("turret failed to get a visible list (-1)");
 		}
@@ -351,7 +351,7 @@ static void OBJiTurret_Draw( OBJtObject *inObject, UUtUns32 inDrawFlags)
 		// apply position and orientation matrix
 		draw_matrix = turret_osd->matrix;
 
-#if TOOL_VERSION
+#if 1 // Enable turret_show_debug (Originally: TOOL_VERSION)
 		if(!(inObject->flags & OBJcObjectFlag_Gunk)) {
 			M3rGeometry_MultiplyAndDraw(turret_osd->turret_class->base_geometry, &draw_matrix);
 		}
@@ -377,7 +377,7 @@ static void OBJiTurret_Draw( OBJtObject *inObject, UUtUns32 inDrawFlags)
 		turret_osd->flags &= ~OBJcTurretFlag_Visible;
 	}
 
-#if TOOL_VERSION
+#if 1 // Enable turret_show_debug (Originally: TOOL_VERSION)
 	// draw the bounding box if this is the selected object
 	if (inDrawFlags & OBJcDrawFlag_Selected)
 	{

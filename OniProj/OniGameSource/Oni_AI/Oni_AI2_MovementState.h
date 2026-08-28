@@ -140,7 +140,7 @@ typedef struct AI2tMovementState {
 	PHtRoomData	*			grid_last_room;
 	UUtBool					grid_failure;
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showactivationpaths (Originally: TOOL_VERSION)
 	// debugging storage of our badness ring, for collision display
 	UUtUns32				numBadnessValues;
 	AI2tBadnessValue		badnesslist[AI2cMovementState_MaxBadnessValues];

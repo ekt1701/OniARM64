@@ -19,14 +19,14 @@
 // ======================================================================
 // defines
 // ======================================================================
-#define OBJcCharacter_DefaultDrawNameDistance			150.0f
+#define OBJcCharacter_DefaultDrawNameDistance			600.0f // Increased distance from 150 to 600
 #define OBJcCharacter_DrawSize							 23.0f
 
 // ======================================================================
 // globals
 // ======================================================================
 
-#if TOOL_VERSION
+#if 1 // Enable show_characters (Originally: TOOL_VERSION)
 // text name drawing
 static UUtBool				OBJgCharacter_DrawInitialized = UUcFalse;
 static UUtRect				OBJgCharacter_TextureBounds;
@@ -56,7 +56,7 @@ const IMtShade				OBJgCharacter_TeamColor[OBJcCharacter_TeamMaxNamed]
 // ======================================================================
 // functions
 // ======================================================================
-#if TOOL_VERSION
+#if 1 // Enable show_characters (Originally: TOOL_VERSION)
 // ----------------------------------------------------------------------
 UUtError
 OBJrCharacter_DrawInitialize(
@@ -90,10 +90,15 @@ OBJrCharacter_DrawInitialize(
 
 		TSrContext_GetStringRect(OBJgCharacter_TextContext, "maximum_length_of_character_name", &OBJgCharacter_TextureBounds);
 
+		OBJgCharacter_TextureWidth = 100; //Set fixed values for show_characters
+		OBJgCharacter_TextureHeight = 30; //Set fixed values for show_characters
+		
 		error =
 			M3rTextureMap_New(
-				OBJgCharacter_TextureBounds.right,
-				OBJgCharacter_TextureBounds.bottom,
+				//OBJgCharacter_TextureBounds.right, //These values caused Oni to crash with show_characters
+				//OBJgCharacter_TextureBounds.bottom, //These values caused Oni to crash with show_characters
+				OBJgCharacter_TextureWidth,  //Enable show_characters
+				OBJgCharacter_TextureHeight,  //Enable show_characters
 				textureFormat,
 				M3cTexture_AllocMemory,
 				M3cTextureFlags_None,
@@ -225,7 +230,7 @@ OBJiCharacter_Draw(
 	OBJtObject				*inObject,
 	UUtUns32				inDrawFlags)
 {
-#if TOOL_VERSION
+#if 1 // Enable show_characters (Originally: TOOL_VERSION)
 	OBJtOSD_Character		*char_osd;
 	M3tPoint3D				camera_location;
 	IMtShade				char_shade;

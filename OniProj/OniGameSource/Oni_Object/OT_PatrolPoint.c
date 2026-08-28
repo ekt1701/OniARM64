@@ -23,7 +23,7 @@
 // ======================================================================
 // defines
 // ======================================================================
-#define OBJcPatrolPath_DefaultDrawNameDistance			150.0f
+#define OBJcPatrolPath_DefaultDrawNameDistance			600.0f // Increased distance from 150
 #define OBJcPatrolPath_DrawSize							  6.0f
 #define OBJcPatrolPath_DrawShade						IMcShade_Orange
 
@@ -34,7 +34,7 @@
 static UUtBool				OBJgPatrolPath_DrawPositions;
 static float				OBJgPatrolPath_DrawNameDistance;
 
-#if TOOL_VERSION
+#if 1 // Enable show_patrolpaths (Originally: TOOL_VERSION)
 // text name drawing
 static UUtBool				OBJgPatrolPath_DrawInitialized = UUcFalse;
 static UUtRect				OBJgPatrolPath_TextureBounds;
@@ -50,7 +50,7 @@ static float				OBJgPatrolPath_WidthRatio;
 // ======================================================================
 // functions
 // ======================================================================
-#if TOOL_VERSION
+#if 1 // Enable show_patrolpaths (Originally: TOOL_VERSION)
 // ----------------------------------------------------------------------
 UUtError
 OBJrPatrolPath_DrawInitialize(
@@ -213,7 +213,7 @@ static void
 OBJiPatrolPath_Delete(
 	OBJtObject				*inObject)
 {
-#if TOOL_VERSION
+#if 1 // Enable show_patrolpaths (Originally: TOOL_VERSION)
 	if (OWgCurrentPatrolPath == (OBJtOSD_PatrolPath *) inObject->object_data) {
 		// we are deleting the current patrol path - it is no longer valid
 		OWgCurrentPatrolPath = NULL;
@@ -228,7 +228,7 @@ OBJiPatrolPath_Draw(
 	OBJtObject				*inObject,
 	UUtUns32				inDrawFlags)
 {
-#if TOOL_VERSION
+#if 1 // Enable show_patrolpaths (Originally: TOOL_VERSION)
 	OBJtOSD_PatrolPath		*pp_osd;
 	M3tPoint3D				camera_location;
 

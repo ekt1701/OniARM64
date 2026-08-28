@@ -30,7 +30,7 @@ static UUtBool				OBJgSound_AlwaysDraw;
 static UUtBool				OBJgSound_AlwaysDrawSpheres;
 static UUtBool				OBJgSound_AlwaysDrawVolumes;
 
-#if TOOL_VERSION
+#if 1 // Enable show_sound commands (Originally: TOOL_VERSION)
 // sound diamond points
 static M3tPoint3D			*OBJgSound_Diamond;
 #endif
@@ -38,7 +38,7 @@ static M3tPoint3D			*OBJgSound_Diamond;
 static UUtError OBJiSound_SetOSD(OBJtObject *inObject, const OBJtOSD_All *inOSD);
 static void OBJiSound_UpdatePosition(OBJtObject *inObject);
 
-#if TOOL_VERSION
+#if 1 // Enable show_sound commands (Originally: TOOL_VERSION)
 // text name drawing
 static UUtBool				OBJgSound_DrawInitialized = UUcFalse;
 static UUtRect				OBJgSound_TextureBounds;
@@ -172,7 +172,7 @@ OBJiSound_DrawSphere(
 	M3rGeometry_LineDraw((OBJcNumPointsInRing + 1), ring_YZ, inShade);
 }
 
-#if TOOL_VERSION
+#if 1 // Enable show_sound commands (Originally: TOOL_VERSION)
 // ----------------------------------------------------------------------
 UUtError
 OBJrSound_DrawInitialize(
@@ -213,8 +213,10 @@ OBJrSound_DrawInitialize(
 
 		DCrText_GetStringRect("01234567890123456789012345 p0.00 v0.00", &OBJgSound_TextureBounds);
 
-		OBJgSound_TextureWidth = OBJgSound_TextureBounds.right;
-		OBJgSound_TextureHeight = OBJgSound_TextureBounds.bottom;
+		//OBJgSound_TextureWidth = OBJgSound_TextureBounds.right; Sound names do not appear with these values 
+		//OBJgSound_TextureHeight = OBJgSound_TextureBounds.bottom; Sound names do not appear with these values 
+		OBJgSound_TextureWidth = 120; //EdT Set fixed values for show_sounds
+		OBJgSound_TextureHeight = 30; //EdT Set fixed values for show_sounds
 		OBJgSound_WidthRatio = (float)OBJgSound_TextureWidth / (float)OBJgSound_TextureHeight;
 		OBJgSound_HeightRatio = (float)OBJgSound_TextureHeight / (float)OBJgSound_TextureWidth;
 
@@ -252,7 +254,7 @@ OBJiSound_DrawName(
 	DCrText_SetSize(TScFontSize_Default);
 	DCrText_SetStyle(TScFontStyle_Default);
 	DCrText_SetShade(IMcShade_Black);
-	DCrText_SetFormat(TSc_HCenter | TSc_VCenter);
+	DCrText_SetFormat(TSc_HLeft | TSc_VCenter); // change TSc_HCenter to TSc_HLeft
 
 	sprintf(name, "%s p%1.2f v%1.2f", inSoundOSD->ambient_name, inSoundOSD->pitch, inSoundOSD->volume);
 	DCrText_DrawString(OBJgSound_Texture, name, &OBJgSound_TextureBounds, &OBJgSound_Dest);
@@ -305,7 +307,9 @@ OBJiSound_Draw(
 	OBJtObject				*inObject,
 	UUtUns32				inDrawFlags)
 {
-#if TOOL_VERSION
+#if 1 // Enable show_sound commands (Originally: TOOL_VERSION)
+    //Hide sound diamond and sound names when off.
+	if (OBJgSound_AlwaysDraw || OBJgSound_AlwaysDrawSpheres || OBJgSound_AlwaysDrawVolumes) {
 	UUtError				error;
 
 	error = OBJrSound_DrawInitialize();
@@ -391,6 +395,7 @@ OBJiSound_Draw(
 		}
 
 		M3rMatrixStack_Pop();
+	}
 	}
 #endif
 
@@ -888,7 +893,8 @@ OBJrSound_Initialize(
 	UUmError_ReturnOnError(error);
 #endif
 
-	OBJgSound_DrawSounds = UUcFalse;
+	OBJgSound_DrawSounds = UUcTrue; //changed UUcFalse to UUcTrue
+
 
 	return UUcError_None;
 }

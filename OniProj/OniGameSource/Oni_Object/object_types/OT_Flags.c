@@ -19,12 +19,12 @@
 // ======================================================================
 // defines
 // ======================================================================
-#define OBJcFlag_DefaultDrawNameDistance			150.0f
+#define OBJcFlag_DefaultDrawNameDistance			600.0f //Increase distance from 150.0f
 
 // ======================================================================
 // globals
 // ======================================================================
-#if TOOL_VERSION
+#if 1 // Enable show_flags (Originally: TOOL_VERSION)
 // text name drawing
 static UUtBool				OBJgFlag_DrawingInitialized = UUcFalse;
 static UUtRect				OBJgFlag_TextureBounds;
@@ -56,7 +56,7 @@ OBJiFlag_SetOSD(
 // ======================================================================
 // functions
 // ======================================================================
-#if TOOL_VERSION
+#if 1 // Enable show_flags (Originally: TOOL_VERSION)
 // ----------------------------------------------------------------------
 UUtError
 OBJrFlag_DrawInitialize(
@@ -269,7 +269,7 @@ OBJiFlag_Draw(
 	OBJtObject				*inObject,
 	UUtUns32				inDrawFlags)
 {
-#if TOOL_VERSION
+#if 1 // Enable show_flags (Originally: TOOL_VERSION)
 	OBJtOSD_Flag			*flag_osd;
 	M3tPoint3D				camera_location;
 

@@ -116,7 +116,7 @@ struct AStPath
 	ONtCharacter			*owner;			// The character who is using this path
 	UUtBool					allow_stairs;	// whether we are trying to get to some stairs
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showastar (Originally: TOOL_VERSION)
 	UUtBool					show_debug;		// write points into global debugging array
 	UUtBool					show_evaluation;// write grid locations into global debugging array
 #endif
@@ -174,7 +174,7 @@ static AStPathPointType		ASgPassabilityType[PHcMax] =
 {AScPathPoint_Clear, AScPathPoint_Clear, AScPathPoint_Clear, AScPathPoint_Danger, AScPathPoint_Tight,
  AScPathPoint_Danger, AScPathPoint_Danger, AScPathPoint_Danger, AScPathPoint_Impassable};
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showastar (Originally: TOOL_VERSION)
 // TEMPORARY DEBUGGING - buffer of points found for paths
 #define AScDebugPath_MaxPoints		4096
 typedef struct AStDebugPathPoint {
@@ -211,7 +211,7 @@ ASiList_CalcWaypoints(
 	AStPathPoint			*outWaypoints,
 	UUtBool					inCarefulPath);
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showastar (Originally: TOOL_VERSION)
 static void
 ASiBuildDebugPath(
 	AStPath					*ioAstar,
@@ -541,7 +541,7 @@ ASrPath_Generate(
 			outWaypoints,
 			inCarefulPath);
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showastar (Originally: TOOL_VERSION)
 		if (ioAstar->show_debug) {
 			ASiBuildDebugPath(ioAstar,
 							  *outNumWaypoints,
@@ -722,7 +722,7 @@ ASrPath_Generate(
 						outWaypoints,
 						inCarefulPath);
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showastar (Originally: TOOL_VERSION)
 					if (ioAstar->show_debug) {
 						ASiBuildDebugPath(ioAstar,
 										  *outNumWaypoints,
@@ -769,7 +769,7 @@ ASrPath_Generate(
 
 exit:
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showastar (Originally: TOOL_VERSION)
 	if (ioAstar->show_evaluation) {
 		ASiBuildDebugGridEvaluation(ioAstar);
 	}
@@ -845,7 +845,7 @@ ASrPath_SetParams(
 	// don't allow the stair region unless we're trying to go there
 	ioAstar->allow_stairs = inAllowStairs;
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showastar (Originally: TOOL_VERSION)
 	ioAstar->show_debug = inShowDebug;
 	ioAstar->show_evaluation = inShowEvaluation;
 #endif
@@ -969,7 +969,7 @@ ASiList_CalcWaypoints(
 			UUmAssert((current_node->adjacent >= 0) && (current_node->adjacent < inAstar->num_allocs));
 			child_node = &inAstar->node_array[current_node->adjacent];
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showastar (Originally: TOOL_VERSION)
 			if (inAstar->show_evaluation) {
 				// TEMPORARY DEBUGGING - this node gets drawn in a different color
 				current_node->flags &= ~AScStatusMask;
@@ -1077,7 +1077,7 @@ ASiList_CalcWaypoints(
 	}
 }
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showastar (Originally: TOOL_VERSION)
 // ----------------------------------------------------------------------
 static void
 ASiBuildDebugPath(
