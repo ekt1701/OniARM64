@@ -1703,7 +1703,7 @@ forceDraw:
 			}
 #endif
 
-#if OCT_TREE_TOOL_SUPPORT
+#if 1 // Enable for DevMode keys OCT_TREE_TOOL_SUPPORT
 			if (AKgDraw_ObjectCollision & AKgDraw_CharacterCollision) {
 				if ((curGQGeneral->flags & AKcGQ_Flag_Chr_Col_Skip) && (curGQGeneral->flags & AKcGQ_Flag_Obj_Col_Skip)) continue;
 			}

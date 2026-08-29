@@ -71,7 +71,7 @@
 #include "Oni_CrashReport_macOS.h"
 #endif
 
-#if DEBUGGING
+#if 1 // Enable FPS with DevMode key (Originally: DEBUGGING)
 #define BRENTS_CHEESY_GAME_PERF	1
 #endif
 

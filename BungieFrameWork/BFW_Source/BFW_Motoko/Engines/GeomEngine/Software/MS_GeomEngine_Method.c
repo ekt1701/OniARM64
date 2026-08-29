@@ -240,7 +240,7 @@ MSrGeomEngine_Method_ContextPrivateNew(
 
 	MSgGeomContextPrivate->lineComputeVertexProc = MSrClip_ComputeVertex_LineFlat;
 
-#if TOOL_VERSION
+#if 1 // Enable DevMode keys (Originally: TOOL_VERSION)
 	error =
 		M3rTextureMap_New(
 			16,
