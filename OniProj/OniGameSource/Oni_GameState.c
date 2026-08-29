@@ -118,7 +118,7 @@ static UUtBool ONgFastMode = UUcFalse;
 static UUtInt32 ONgDrawEveryFrameMultiple = 1;
 static UUtBool ONgChangeCharacters = UUcFalse;
 
-#if TOOL_VERSION
+#if 1 // Enable DevMode keys (Originally: TOOL_VERSION)
 COtStatusLine		perf_gsd[4];
 COtStatusLine		perf_gsu[4];
 COtStatusLine		occl_display[1];
@@ -167,6 +167,8 @@ extern UUtBool		OBgObjectsFriction;
 extern UUtBool		OBgObjectsShowDebug;
 extern UUtBool		AIgVerbose;
 static UUtInt32		ONgContinueSavePoint = 0;
+extern UUtBool		OBJgTriggerVolume_Visible; //Add feature to show triggervolumes by devmode key control shift x
+
 UUtBool ONgDebugConsoleAction = UUcFalse;
 
 float	ONgGameState_InputAccel = 5.0f;
@@ -3603,6 +3605,12 @@ void ONrGameState_HandleUtilityInput(const ONtInputState*	inInput)
 	if (ONrDebugKey_WentDown(ONcDebugKey_ExplodeFour)) {
 		ONrParticle3_Explode(4);
 	}
+	
+	//Enable show trigger volumes with Devmode key
+	if (ONrDebugKey_WentDown(ONcDebugKey_Secret_X)) {
+		OBJgTriggerVolume_Visible = !OBJgTriggerVolume_Visible;
+	}
+	
 
 #if TOOL_VERSION
 	ONrGameState_HandleUtilityInput_Tool(inInput);
@@ -5357,7 +5365,7 @@ ONiGameState_Display_Reflectable(
 	UUrStallTimer_End(&reflectable_internal, "ONiGameState_Display_Reflectable - powerup display");
 	if (refl_log) UUrStartupMessage("[REFL] post WPrPowerup_Display");
 
-#if TOOL_VERSION
+#if 1 // Enable DevMode keys (Originally: TOOL_VERSION)
 	UUrStallTimer_Begin(&reflectable_internal);
 	// DEBUGGING: draw currently selected AI path
 	OWrAI_Display();
@@ -5632,7 +5640,7 @@ ONrGameState_Initialize(
 	strcpy(texture_info[0].text, "");
 #endif
 
-#if TOOL_VERSION
+#if 1 // Enable DevMode keys (Originally: TOOL_VERSION)
 	// Global initializations go here
 	COrConsole_StatusLines_Begin(perf_gsd, &ONgShowPerformance_GSD, 4);
 	COrConsole_StatusLines_Begin(perf_gsu, &ONgShowPerformance_GSU, 4);
@@ -5647,7 +5655,7 @@ ONrGameState_Initialize(
 	COrConsole_StatusLines_Begin(physics_count_display, &ONgShowPhysicsCount, 2);
 	COrConsole_StatusLines_Begin(script_count_display, &ONgShowScriptingCount, 2);
 
-	strcpy(perf_overall[0].text, "*** perf overall ***");
+	//strcpy(perf_overall[0].text, "*** perf overall ***");
 	strcpy(perf_gsd[0].text, "*** perf display ***");
 	strcpy(perf_gsu[0].text, "*** perf update ***");
 	strcpy(occl_display[0].text, "*** env draw occl ***");

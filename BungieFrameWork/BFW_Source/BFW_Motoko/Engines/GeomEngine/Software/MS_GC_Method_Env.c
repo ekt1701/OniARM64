@@ -134,8 +134,6 @@ MSrGeomContext_Method_Env_DrawGQList(
 	gqCollisionArray	= MSgGeomContextPrivate->environment->gqCollisionArray->gqCollision;
 	textureMapArray		= MSgGeomContextPrivate->environment->textureMapArray->maps;
 
-	// debugState = MSgGeomContextPrivate->stateInt[M3cGeomStateIntType_DebugMode];
-	debugState = 0;
 
 	useDebugMaps = (UUtBool)((debugState & M3cGeomState_DebugMode_UseEnvDbgTexture) != 0);
 	drawGhostGQs = (UUtBool)((debugState & M3cGeomState_DebugMode_DrawGhostGQs) != 0);
@@ -269,7 +267,7 @@ MSrGeomContext_Method_Env_DrawGQList(
 		// trivial reject
 		if(clipCodeAND != 0) continue;
 
-#if TOOL_VERSION
+#if 1 // Enable DevMode keys (Originally: TOOL_VERSION)
 		// CB: flashTexture only exists in the tool version now
 		if (gqIndexItr == AKgHighlightGQIndex)
 		{

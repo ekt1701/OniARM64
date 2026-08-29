@@ -54,7 +54,7 @@ const ONtDebugKeyBinding bindings[ONcDebugKey_Num] =
 	{	ONcDebugKey_DrawEveryFrame,			ONcDebugKey_Tool,	ONcDebugKey_Needs_Modifier,		LIcKeyCode_None,		LIcKeyCode_G	},
 	{	ONcDebugKey_Secret_X,				ONcDebugKey_Tool,	ONcDebugKey_Needs_Modifier,		LIcKeyCode_None,		LIcKeyCode_X	},
 	{	ONcDebugKey_Secret_Y,				ONcDebugKey_Tool,	ONcDebugKey_Needs_Modifier,		LIcKeyCode_None,		LIcKeyCode_Y	},
-	{	ONcDebugKey_Secret_Z,				ONcDebugKey_Tool,	ONcDebugKey_Needs_Modifier,		LIcKeyCode_None,		LIcKeyCode_Z	},
+	{	ONcDebugKey_Secret_Z,				ONcDebugKey_Tool,	ONcDebugKey_Needs_Modifier,		LIcKeyCode_None,		LIcKeyCode_End	}, //Switch Warp to camera to secret Z
 	{	ONcDebugKey_AddFlag,				ONcDebugKey_Tool,	ONcDebugKey_Needs_Modifier,		LIcKeyCode_None,		LIcKeyCode_Insert	},
 	{	ONcDebugKey_DeleteFlag,				ONcDebugKey_Tool,	ONcDebugKey_Needs_Modifier,		LIcKeyCode_None,		LIcKeyCode_Delete	},
 	{	ONcDebugKey_Unstick,				ONcDebugKey_Tool,	ONcDebugKey_Needs_Modifier,		LIcKeyCode_None,		LIcKeyCode_U	},
@@ -72,8 +72,8 @@ const ONtDebugKeyBinding bindings[ONcDebugKey_Num] =
 	{	ONcDebugKey_Camera_Mode,			ONcDebugKey_Tool,	ONcDebugKey_Without_Modifier,	LIcKeyCode_NumPadEnter,	LIcKeyCode_Return },
 	{	ONcDebugKey_SingleStep,				ONcDebugKey_Tool,	ONcDebugKey_Without_Modifier,	LIcKeyCode_None,		LIcKeyCode_Slash },
 	{	ONcDebugKey_ToggleActiveCamera,		ONcDebugKey_Tool,	ONcDebugKey_Needs_Modifier,		LIcKeyCode_None,		LIcKeyCode_Home },
-	{	ONcDebugKey_SingleStepMode,			ONcDebugKey_Tool,	ONcDebugKey_Without_Modifier,	LIcKeyCode_None,		LIcKeyCode_Period },
-	{	ONcDebugKey_CharToCamera,			ONcDebugKey_Tool,	ONcDebugKey_Without_Modifier,	LIcKeyCode_None,		LIcKeyCode_End },
+	{	ONcDebugKey_SingleStepMode,			ONcDebugKey_Tool,	ONcDebugKey_Without_Modifier,	LIcKeyCode_None,		LIcKeyCode_Period }, 
+	{	ONcDebugKey_CharToCamera,			ONcDebugKey_Tool,	ONcDebugKey_Without_Modifier,	LIcKeyCode_None,		LIcKeyCode_Z }, //Switch Warp to camera to secret Z
 	{	ONcDebugKey_KillParticles,			ONcDebugKey_Tool,	ONcDebugKey_Needs_Modifier,		LIcKeyCode_None,		LIcKeyCode_K },
 	{	ONcDebugKey_AIBreakPoint,			ONcDebugKey_Tool,	ONcDebugKey_Without_Modifier,	LIcKeyCode_None,		LIcKeyCode_BackSpace },
 	{	ONcDebugKey_ExplodeOne,				ONcDebugKey_Tool,	ONcDebugKey_Without_Modifier,	LIcKeyCode_None,		LIcKeyCode_7 },

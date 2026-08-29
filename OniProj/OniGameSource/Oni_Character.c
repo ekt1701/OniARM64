@@ -3818,7 +3818,7 @@ exit:
 
 static void ONrCharacter_DebugKeys(ONtCharacter *ioCharacter, ONtActiveCharacter *ioActiveCharacter)
 {
-#if TOOL_VERSION
+#if 1 // Enable DevMode keys (Originally: TOOL_VERSION)
 	/*
 	 * debugging keys
 	 */

@@ -231,7 +231,7 @@ OBJiTriggerVolume_Draw(
 	OBJtObject				*inObject,
 	UUtUns32				inDrawFlags)
 {
-#if TOOL_VERSION
+#if 1 // Enable DevMode keys (Originally: TOOL_VERSION)
 	UUtUns32				itr;
 	OBJtOSD_All				*inOSD = (OBJtOSD_All *) inObject->object_data;
 	OBJtOSD_TriggerVolume	*trigger_osd = &inOSD->osd.trigger_volume_osd;
