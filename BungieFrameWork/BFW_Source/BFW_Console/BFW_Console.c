@@ -463,7 +463,7 @@ COiVariableChanged_Priority(
 	height = M3rDraw_GetHeight();
 
 	// set the command line bounds
-	COgConsoleBounds.left = 2;
+	COgConsoleBounds.left = 4;
 	COgConsoleBounds.right = width - 2;
 
 	if (COgPriority > COcPriority_Console) {
@@ -634,7 +634,7 @@ COrConfigure(
 	COgDrawAreaHeight = drawAreaHeight;
 
 	// set the command line bounds
-	bounds.left = 2;
+	bounds.left = 4;
 	bounds.top = drawAreaHeight - 23;
 	bounds.right = bounds.left + drawAreaWidth - 4;
 	bounds.bottom = bounds.top + 21;
@@ -1976,7 +1976,7 @@ COrCommand_CycleDown(
 #endif
 // ======================================================================
 // ----------------------------------------------------------------------
-#if THE_DAY_IS_MINE || defined(ONI_SWEEP_CONSOLE)	/* #103 — see BFW_Console.h */
+#if 1 // THE_DAY_IS_MINE || defined(ONI_SWEEP_CONSOLE)	/* #103 — see BFW_Console.h */
 void UUcArglist_Call COrConsole_Printf(const char *format, ...)
 {
 	char buffer[2048];
@@ -2212,7 +2212,7 @@ void COrConsole_StatusLine_LevelEnd(void)
 //
 // Compiled out of the shipping build along with COrConsole_Printf itself.
 // ======================================================================
-#if THE_DAY_IS_MINE || defined(ONI_SWEEP_CONSOLE)
+#if 1 // THE_DAY_IS_MINE || defined(ONI_SWEEP_CONSOLE) -- Enable console printing
 
 static COtConsoleTap COgConsoleTap = NULL;
 

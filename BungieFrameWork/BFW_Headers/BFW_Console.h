@@ -159,7 +159,7 @@ extern IMtShade COgDefaultTextShadowShade;
 // compiles COrConsole_Printf away to the inline no-op below at all ~1170 call
 // sites — including SLrScript_ReportError, so BSL script errors would vanish
 // during a sweep. The sweep binary needs the real thing.
-#if THE_DAY_IS_MINE || defined(ONI_SWEEP_CONSOLE)
+#if 1 // THE_DAY_IS_MINE || defined(ONI_SWEEP_CONSOLE) -- Enable console printing
 void UUcArglist_Call COrConsole_Printf(const char *format, ...);
 #else
 static UUcInline void UUcArglist_Call COrConsole_Printf(const char *format, ...)
@@ -186,7 +186,7 @@ void UUcArglist_Call COrConsole_Printf_Color(COtPriority inPriority, IMtShade in
 // definitions sit past the last __LINE__ use, which keeps that binary
 // bit-for-bit what it was. Header line numbers are free — nothing here uses
 // __LINE__.
-#if THE_DAY_IS_MINE || defined(ONI_SWEEP_CONSOLE)
+#if 1 // THE_DAY_IS_MINE || defined(ONI_SWEEP_CONSOLE) -- Enable console printing
 	typedef void (*COtConsoleTap)(const char *inString);
 
 	void COrConsole_SetTap(COtConsoleTap inTap);
