@@ -151,7 +151,7 @@ static void iAppendDebugFileMessage(char *msg)
                 iDebugFile = stderr;
 #else
 		// Issue #17 — append mode preserves prior sessions across launches.
-		iDebugFile = iOpenLogFile("debugger.txt", "ab");
+		iDebugFile = iOpenLogFile("debugger.txt", "w");
 		iWriteSessionBanner(iDebugFile);
 #endif
 	}
@@ -593,7 +593,7 @@ void UUcArglist_Call UUrStartupMessage(
 
 	if (NULL == stream) {
 		// Issue #17 — append mode preserves prior sessions across launches.
-		stream = iOpenLogFile("startup.txt", "a");
+		stream = iOpenLogFile("startup.txt", "w");
 		iWriteSessionBanner(stream);
 	}
 
