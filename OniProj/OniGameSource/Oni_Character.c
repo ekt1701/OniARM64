@@ -78,6 +78,7 @@ enum {
 const char *ONcPainTypeName[ONcPain_Max] = {"light", "medium", "heavy", "death"};
 
 extern UUtInt32 PHgGridVisible;
+extern UUtBool WPgPlayerKicksWeapons;
 extern UUtUns16 AIgShowDebug;
 extern UUtBool ONgDisplayBNV;
 
@@ -13141,8 +13142,8 @@ ONrCharacter_Callback_FindPhyCollisions(
 	active_character = ONrGetActiveCharacter(character);
 	UUmAssertReadPtr(active_character, sizeof(*active_character));
 
-	// player does not push weapons
-	skip_weapons = (character->charType == ONcChar_Player);
+	// player does not push weapons, unless wp_kickable has been enabled
+	skip_weapons = (character->charType == ONcChar_Player) && (!WPgPlayerKicksWeapons);
 	has_any_physics_collisions = !(character->flags & ONcCharacterFlag_Dead_2_Moving);
 
 	if (has_any_physics_collisions) {

@@ -772,6 +772,8 @@ static void WPiWeaponPhysics_Callback_ReceiveForce(
 		if (pushing_character->charType == ONcChar_Player) {
 			if (!WPgPlayerKicksWeapons) {
 				// the player cannot kick weapons
+				// (note: even when true, ONrCharacter_Callback_FindPhyCollisions in
+				// Oni_Character.c must also let the player generate a weapon collision)
 				return;
 			}
 		} else if (pushing_character->charType == ONcChar_AI2) {
@@ -2243,7 +2245,7 @@ void WPrRelease(
 	inWeapon->must_fire_time = 0;
 	inWeapon->reloadTime = 0;
 	inWeapon->ai_alert_timer = 0;
-	inWeapon->chamber_time = 0;
+	//inWeapon->chamber_time = 0; Fix drop-pickup-weapon delay exploit
 	inWeapon->reload_delay_time = 0;
 	inWeapon->flags &= ~WPcWeaponFlag_InHand;
 	for (itr = 0; itr < inWeapon->weaponClass->attachment_count; itr++) {
@@ -2255,7 +2257,8 @@ void WPrRelease(
 		inWeapon->freeTime = 0;
 	}
 	else {
-		inWeapon->freeTime = WPcFreeTime;
+		// use the console-tunable wp_fadetime instead of the fixed WPcFreeTime constant
+		inWeapon->freeTime = (UUtUns16) WPgFadeTime;
 	}
 
 	// we are being dropped, defer these state changes because we might be called from within
@@ -2494,6 +2497,8 @@ UUtError WPrInitialize(
 
 #if 1 // Expose debug commands for scripting (Originally: CONSOLE_DEBUGGING_COMMANDS)
 	error = SLrGlobalVariable_Register_Bool("debug_weapons", "prints debugging info about weapon particle events", &WPgDebugShowEvents);
+	// NOTE: this only takes effect once the player is allowed to generate a weapon collision
+	// in the first place - see skip_weapons in ONrCharacter_Callback_FindPhyCollisions (Oni_Character.c)
 	error = SLrGlobalVariable_Register_Bool("wp_kickable", "lets the player kick weapons", &WPgPlayerKicksWeapons);
 	error = SLrGlobalVariable_Register_Bool("recoil_edit", "enables editable recoil", &WPgRecoilEdit);
 	error = SLrGlobalVariable_Register_Float("recoil_base", "base", &WPgRecoil_Edited.base);
@@ -2504,7 +2509,8 @@ UUtError WPrInitialize(
 	error = SLrGlobalVariable_Register_Int32("wp_hypostrength", "Sets strength of hypo spray", &WPgHypoStrength);
 	UUmError_ReturnOnError(error);
 
-	error = SLrGlobalVariable_Register_Int32("wp_fadetime", "Sets free time for powerups", &WPgFadeTime);
+	// controls the free time (in ticks) before a dropped weapon starts to fade - see inWeapon->freeTime above
+	error = SLrGlobalVariable_Register_Int32("wp_fadetime", "Sets free time (in ticks) before a dropped weapon starts to fade", &WPgFadeTime);
 	UUmError_ReturnOnError(error);
 #endif
 
