@@ -191,7 +191,7 @@ static void ONiCharacter_AllocateShadow(ONtActiveCharacter *ioActiveCharacter);
 static void ONiCharacter_DeallocateShadow(ONtActiveCharacter *ioActiveCharacter);
 static void ONiCharacter_DeleteShadow(ONtActiveCharacter *ioActiveCharacter);
 
-#if DEBUG_ATTACKEXTENT
+#if 1 // Enable chr_showextent (Originally: DEBUG_ATTACKEXTENT)
 // CB: temporary debugging
 static UUtBool			ONgTempDebug_AttackExtent_ShowGlobalExtents = UUcFalse;
 static UUtError
@@ -2457,8 +2457,9 @@ ONrGameState_InstallConsoleVariables(void)
 	COrConsole_StatusLines_Begin(ONgChrOverlayStatus, &gDebugOverlay, ONcOverlayIndex_Count + 1);
 	strcpy(ONgChrStatus[0].text, "*** character status ***");
 
-#if DEBUG_ATTACKEXTENT
+#if 1 // Enable chr_showextent (Originally: DEBUG_ATTACKEXTENT)
 	// CB: temporary debugging
+	UUtError error;
 	error =
 	SLrScript_Command_Register_Void(
 		"chr_showextent",
@@ -5755,7 +5756,7 @@ static void ONiHolograph_Lighting(void)
 }
 
 
-#if DEBUG_ATTACKEXTENT
+#if 1 // Enable chr_showextent (Originally: DEBUG_ATTACKEXTENT)
 static TRtAnimation *	ONgTempDebug_AttackExtent_Animation = NULL;
 static UUtUns32			ONgTempDebug_AttackExtent_CurTime;
 static UUtUns32			ONgTempDebug_AttackExtent_Frame;
@@ -5910,12 +5911,12 @@ static void ONiCharacter_TempDebug_DrawAttackExtent(ONtCharacter *inCharacter)
 							+ ONgTempDebug_AttackExtent_SinTheta * bound->position.y;
 			points[0].z += - ONgTempDebug_AttackExtent_SinTheta * bound->position.x
 							+ ONgTempDebug_AttackExtent_CosTheta * bound->position.y;
-			points[0].y += bound->attack_height;
+			points[0].y += bound->attack_minheight; // Changed from attack_height to attack_minheight
 
 			points[1] = points[0];
 			switch(cur_direction) {
 				case TRcDirection_None:
-					COrConsole_Printf("### warning: animation is of type 'none'");
+					//COrConsole_Printf("### warning: animation is of type 'none'"); //Enable Debug Attack Extent Remove error message
 				case TRcDirection_Forwards:
 					points[1].x += ONgTempDebug_AttackExtent_SinTheta * bound->attack_dist;
 					points[1].z += ONgTempDebug_AttackExtent_CosTheta * bound->attack_dist;
@@ -5997,7 +5998,7 @@ static void ONiCharacter_TempDebug_DrawAttackExtent(ONtCharacter *inCharacter)
 		cur_extent = extent_info->attackExtents + extent_index;
 
 		points[0] = cur_location;
-		points[0].y += cur_extent->attack_height * TRcPositionGranularity;
+		points[0].y += cur_extent->attack_minheight * TRcPositionGranularity; // Changed attack_height to attack_minheight
 
 		attack_dist = cur_extent->attack_distance * TRcPositionGranularity;
 
@@ -6025,7 +6026,7 @@ static void ONiCharacter_TempDebug_DrawAttackExtent(ONtCharacter *inCharacter)
 
 			switch(cur_direction) {
 				case TRcDirection_None:
-					COrConsole_Printf("### warning: animation is of type 'none'");
+					// COrConsole_Printf("### warning: animation is of type 'none'"); //Enable Debug Attack Extent Remove error message
 				case TRcDirection_Forwards:
 					points[1].x += ONgTempDebug_AttackExtent_SinTheta * attack_dist;
 					points[1].z += ONgTempDebug_AttackExtent_CosTheta * attack_dist;
@@ -7191,9 +7192,10 @@ void ONrGameState_DisplayCharacters(void)
 		}
 #endif
 
-#if DEBUG_ATTACKEXTENT
+#if 1 // Enable chr_showextent (Originally: DEBUG_ATTACKEXTENT)
 		// CB: more temp debugging code
-		if (character->charType == ONcChar_Player) {
+		//if (character->charType == ONcChar_Player) { Replace to Enable Debug Attack Extent
+		if (ONgTempDebug_AttackExtent_ShowGlobalExtents) {
 			ONiCharacter_TempDebug_DrawAttackExtent(ONgGameState->local.playerCharacter);
 		}
 #endif
@@ -11545,7 +11547,7 @@ void ONrCharacter_NewAnimationHook(ONtCharacter *ioCharacter, ONtActiveCharacter
 	// animations it has to respond to
 	ioCharacter->animCounter++;
 
-#if DEBUG_ATTACKEXTENT
+#if 1 // Enable chr_showextent (Originally: DEBUG_ATTACKEXTENT)
 	{
 		// CB: temporary debugging code
 		if (ioCharacter == ONrGameState_GetPlayerCharacter()) {
