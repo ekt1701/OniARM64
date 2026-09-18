@@ -18,7 +18,7 @@
 // ------------------------------------------------------------------------------------
 // -- global variables
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showlos (Originally TOOL_VERSION)
 // DEBUGGING
 #define AI2_LOCALPATH_LINEMAX		60
 

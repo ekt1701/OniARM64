@@ -119,7 +119,7 @@ extern const char *AI2cNoGunName[];
 #define AI2cCombat_InvestigateInterpRange			30.0f
 #define AI2cCombat_InvestigateMinRange				12.0f
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showlos (Originally TOOL_VERSION)
 // TEMPORARY DEBUGGING - buffer for storing LOS points in
 #define AI2cCombat_LOSPointBufferSize		1000
 extern M3tPoint3D AI2gCombat_LOSPoints[];

@@ -121,7 +121,7 @@ UUtError AI2rInitialize(void)
 	error = AI2rMelee_Initialize();
 	UUmError_ReturnOnError(error);
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showlos (Originally TOOL_VERSION)
 	// TEMPORARY DEBUGGING - initialize the buffer for storing LOS points in
 	UUrMemory_Clear(AI2gCombat_LOSPoints, AI2cCombat_LOSPointBufferSize * sizeof(M3tPoint3D));
 	UUrMemory_Clear(AI2gCombat_LOSClear, AI2cCombat_LOSPointBufferSize * sizeof(UUtBool));
@@ -2253,7 +2253,7 @@ void AI2rDisplayGlobalDebuggingInfo(void)
 		AI2rLocalPath_DebugLines(ONrGameState_GetPlayerCharacter());
 	}
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showlos (Originally TOOL_VERSION)
 	if (AI2gDebug_ShowLOS) {
 		UUtUns32 itr;
 
@@ -2985,7 +2985,7 @@ static UUtError AI2rDebugName_Initialize(void)
 		M3rTextureMap_New(
 			//AI2gDebugName_TextureBounds.right, //These values caused Oni to crash with ai2_shownames
 			//AI2gDebugName_TextureBounds.bottom, //These values caused Oni to crash with ai2_shownames
-			
+
 			AI2gDebugName_TextureWidth, //Enable ai2_shownames
 			AI2gDebugName_TextureHeight, //Enable ai2_shownames
 			textureFormat,

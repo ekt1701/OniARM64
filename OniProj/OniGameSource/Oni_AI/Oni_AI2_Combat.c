@@ -140,7 +140,7 @@ const float AI2cCombatLookRange[AI2cPrimaryMovement_Max] =
 	140.0f,		// melee
 	160.0f};	// getup
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showlos (Originally TOOL_VERSION)
 // TEMPORARY DEBUGGING - buffer for storing LOS points in
 M3tPoint3D AI2gCombat_LOSPoints[AI2cCombat_LOSPointBufferSize];
 UUtBool AI2gCombat_LOSClear[AI2cCombat_LOSPointBufferSize];
@@ -664,6 +664,8 @@ void AI2rCombat_Update(ONtCharacter *ioCharacter)
 				}
 			}
 		}
+
+
 
 		// decide what our primary movement mode should be
 		AI2rManeuver_DecidePrimaryMovement(ioCharacter, combat_state);
@@ -1722,7 +1724,7 @@ static UUtBool AI2iCombat_CheckLOS(ONtCharacter *ioCharacter, AI2tCombatState *i
 	}
 
 exit:
-#if TOOL_VERSION
+#if 1 // Enable ai2_showlos (Originally TOOL_VERSION)
 	if (AI2gDebug_ShowLOS) {
 		// store this line of sight in the global debugging buffer
 		AI2gCombat_LOSPoints[AI2gCombat_LOSNextPoint] = *inFrom;

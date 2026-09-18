@@ -55,7 +55,7 @@ enum {
 // ------------------------------------------------------------------------------------
 // -- external globals
 
-#if TOOL_VERSION
+#if 1 // Enable ai2_showlos (Originally TOOL_VERSION)
 UUtBool		AI2gDebugLocalPath_Stored = UUcFalse;
 UUtUns32	AI2gDebugLocalPath_LineCount = 20;
 M3tPoint3D	AI2gDebugLocalPath_Point;
@@ -106,7 +106,7 @@ void AI2rLocalPath_Terminate(void)
 // debugging - cast a halo of lines into the local environment
 void AI2rLocalPath_DebugLines(ONtCharacter *inCharacter)
 {
-#if TOOL_VERSION
+#if 1 // Enable ai2_showlos (Originally TOOL_VERSION)
 	UUtError error;
 	UUtUns32 itr;
 	float direction;
