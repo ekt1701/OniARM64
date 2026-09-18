@@ -113,7 +113,7 @@ void AMrRenderCrosshair(void)
 
 	if ((!me) || (!me_active)) return;
 
-#if TOOL_VERSION
+#if 1 // Enable aim commands (Originally TOOL_VERSION)
 	if (AMgShow_Axes)
 	{
 		M3tPoint3D loc;
@@ -160,7 +160,7 @@ void AMrRayToEverything(
 	AMtRayResultType 	returnWhat;
 	UUtBool				collision;
 
-#if TOOL_VERSION
+#if 1 // Enable aim commands (Originally TOOL_VERSION)
 	UUtBool				character_laser_sight;
 
 	character_laser_sight = AMgCharacterLaserSight;
@@ -225,7 +225,7 @@ void AMrRayToEverything(
 		}
 	}
 
-#if TOOL_VERSION
+#if 1 // Enable aim commands (Originally TOOL_VERSION)
 	if (character_laser_sight) {
 		if (AMgShow_Closest && collision) {
 			AKtEnvironment*		env = ONgGameState->level->environment;
